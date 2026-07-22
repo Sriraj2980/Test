@@ -23,6 +23,25 @@ cd gateway-service
 mvn spring-boot:run
 ```
 
+## Account Service API
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/accounts/{accountId}/transactions` | Apply a CREDIT or DEBIT transaction to an account |
+| `GET` | `/accounts/{accountId}/balance` | Get an account's current balance (sum of CREDITs − sum of DEBITs) |
+
+Example:
+
+```bash
+curl -X POST http://localhost:8081/accounts/1/transactions \
+  -H "Content-Type: application/json" \
+  -d '{"type":"CREDIT","amount":100.00}'
+
+curl http://localhost:8081/accounts/1/balance
+```
+
+An account is created automatically the first time a transaction is posted to it. Requesting the balance for an account that has never had a transaction returns `404`.
+
 ## Health checks
 
 Each service exposes:
