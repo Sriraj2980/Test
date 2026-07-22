@@ -30,6 +30,6 @@ Each service exposes:
 - `GET /health` — custom endpoint that checks datasource connectivity
 - `GET /actuator/health` — Spring Boot Actuator's default health endpoint
 
-## Data
+##  Data
 
 Each service uses its own in-memory H2 database (`gateway_service` / `account_service`), reset on every restart. The H2 console is enabled at `/h2-console` on each service's port.
